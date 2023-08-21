@@ -40,9 +40,10 @@ in {
   ];
 
   # files
-  home.file.".tmux.conf" = import "${config_path}/tmux.nix";
-  home.file.".xinitrc" = import "${config_path}/xinitrc.nix";
-  home.file.".inputrc" = import "${config_path}/inputrc.nix";
+  home.file.".tmux.conf".text = builtins.readFile "${config_path}/tmux.conf";
+  home.file.".xinitrc".text = builtins.readFile "${config_path}/xinitrc";
+  home.file.".inputrc".text = builtins.readFile "${config_path}/inputrc";
+  home.file.".config/i3/config".text = builtins.readFile "${config_path}/i3.conf";
 
   # program config
   programs.fzf = import "${config_path}/fzf.nix";
@@ -52,6 +53,7 @@ in {
   programs.starship = import "${config_path}/starship.nix";
   programs.git = import "${config_path}/git.nix";
   programs.alacritty = import "${config_path}/alacritty.nix";
+  programs.zathura = import "${config_path}/zathura.nix";
   programs.bash = import "${config_path}/bash.nix" {config_path = config_path;};
   programs.neovim = import "${config_path}/neovim.nix" {pkgs = pkgs;};
 
