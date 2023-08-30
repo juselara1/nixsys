@@ -55,7 +55,7 @@
     wget curl pciutils
 
     # essential
-    gcc lld gnupg pinentry-curses
+    gcc lld gnupg pinentry-qt pinentry-curses
   ];
 
   environment.pathsToLink = [ "/libexec" ];
@@ -64,7 +64,7 @@
   services.pcscd.enable = true;
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "curses";
+    pinentryFlavor = "qt";
     enableSSHSupport = true;
   };
 
@@ -107,8 +107,14 @@
   };
 
   # docker
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    enableNvidia = true;
+  };
 
   # Nixos version.
   system.stateVersion = "23.05";
 }
+
+# sudo rm system-{18..22}-link
+# sudo nix store gc
