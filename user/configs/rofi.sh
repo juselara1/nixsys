@@ -44,12 +44,39 @@ get_pass_menu() {
     esac
 }
 
+get_windowid() {
+    xdotool getactivewindow > /tmp/send-text-windowid
+}
+
+get_emacs_profiles() {
+    local options="python-nix\nterminal-nix\npython-win"
+    local option=`echo -e "${options}" | rofi -dmenu -p "Select one:"`
+    cd "${HOME}/repositories/juselara_emacs/" && make "${option}"
+}
+
+get_emacs_menu() {
+    local options=" server\nξ client"
+    option=`echo -e "${options}" | rofi -dmenu -p "Select one:"`
+    case $option in
+	" server")
+	    # emacs
+	    get_emacs_profiles
+	;;
+	"ξ client")
+	    emacsclient -c
+	;;
+    esac
+}
+
 custom_rofi () {
-    local options="🌐 qtbrowser\n🦊 firefox\n🪟 window\n🔑 password\n😀 emoji\n🖥 ssh\n⬆️ launcher"
+    local options=" emacs\n🌐 qtbrowser\n🦊 firefox\n🪟 get window\n🔑 password\n😀 emoji\n🖥 ssh\n⬆️ launcher"
     option=`echo -e "${options}" | rofi -dmenu -p "Please select one:"`
     case $option in
-        "🪟 window")
-            rofi -show window
+	" emacs")
+	    get_emacs_menu
+	    ;;
+        "🪟 get window")
+	    get_windowid
             ;;
         "⬆️ launcher")
             rofi -show run

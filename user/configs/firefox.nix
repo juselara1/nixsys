@@ -14,6 +14,7 @@ in
         ublock-origin
         sidebery
         gruvbox-dark-theme
+        ghosttext
       ];
       bookmarks = [
         {
@@ -191,7 +192,7 @@ in
           name = "teams";
           tags = ["teams"];
           keyword = "teams";
-          url = "https://teams.microsoft.com/"
+          url = "https://teams.microsoft.com/";
         }
       ];
       userChrome = builtins.readFile "${config_path}/firefox/userChrome.css";

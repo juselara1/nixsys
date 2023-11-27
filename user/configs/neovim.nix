@@ -6,6 +6,7 @@
   vimdiffAlias = true;
   withPython3 = true;
   extraPython3Packages = ps: with ps; [
+    ruff-lsp
     (
       buildPythonPackage rec {
         pname = "asyncmake";

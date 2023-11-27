@@ -7,8 +7,11 @@
 for file in "${config_path}/bash/*.sh"; do
     eval "$(cat $file)"
 done
-set -o vi
 '';
+  sessionVariables = {
+    EDITOR = "emacs";
+    TERM = "xterm";
+  };
   shellAliases = {
     ls = "ls --color=auto";
     l = "ls";

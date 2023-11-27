@@ -1,0 +1,12 @@
+(undo-tree-save-format-version . 1)
+"4add7d5c22f7141275a06b6055a3bac9b1803c2a"
+[nil nil nil nil (25888 7945 633243 79000) 0 nil]
+([nil nil ((1 . 18) (t . -1)) nil (25888 7945 633241 842000) 0 nil])
+([nil nil ((18 . 19)) nil (25888 7945 633241 104000) 0 nil])
+([nil current ((nil rear-nonsticky nil 18 . 19) (#("
+" 0 1 (fontified nil)) . -47) (18 . 48) 17 (t 25888 7909 166456 385000)) nil (25888 7967 894185 69000) 0 nil])
+([nil nil ((nil rear-nonsticky nil 47 . 48) (#("
+" 0 1 (fontified nil)) . -76) (47 . 77) 19 (t 25888 7945 636855 847000)) ((#("
+eval \"$(starship init bash)\"
+" 0 1 (fontified nil rear-nonsticky nil) 1 5 (fontified nil face font-lock-builtin-face) 5 6 (fontified nil) 6 29 (fontified nil face font-lock-string-face) 29 30 (fontified nil)) . 47) (undo-tree-id0 . -1) (undo-tree-id1 . -29) (undo-tree-id2 . -1) (undo-tree-id3 . -1) (undo-tree-id4 . -1) (76 . 77) (nil rear-nonsticky t 47 . 48)) (25888 7967 893802 179000) 0 nil])
+nil
