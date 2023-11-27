@@ -39,7 +39,7 @@
   users.users.juselara = {
     shell = pkgs.bash;
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ];
+    extraGroups = [ "wheel" "docker" "libvirtd" ];
     initialPassword = "pass123";
   };
 
@@ -56,6 +56,9 @@
 
     # essential
     gcc lld gnupg pinentry-qt pinentry-curses
+
+    # virtualization
+    virt-manager qemu
   ];
 
   environment.pathsToLink = [ "/libexec" ];
@@ -66,13 +69,6 @@
     enable = true;
     pinentryFlavor = "qt";
     enableSSHSupport = true;
-  };
-
-  # steam
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
 
   # ssh
@@ -96,6 +92,11 @@
     videoDrivers = ["nvidia" "displaylink"]; # `nix-prefetch-url file://$PWD/displaylink-570.zip`
   };
 
+  # opengl
+  hardware.opengl = {
+    driSupport32Bit = true;
+  };
+
   # nvidia
   hardware.nvidia = {
     nvidiaPersistenced = true;
@@ -112,9 +113,15 @@
     enableNvidia = true;
   };
 
+  # qemu
+  virtualisation.libvirtd.enable = true;
+  programs.dconf.enable = true;
+
   # Nixos version.
   system.stateVersion = "23.05";
 }
 
-# sudo rm system-{18..22}-link
-# sudo nix store gc
+# nix-env --list-generations
+# nix-collect-garbage --delete-old
+# sudo nix-collect-garbage -d
+# sudo /run/current-system/bin/switch-to-configuration boot
