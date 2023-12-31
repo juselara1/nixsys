@@ -1,0 +1,18 @@
+sparklines:
+  - title: "\U0001F4BB Processing"
+    position: [[0, 14], [40, 24]]
+    rate-ms: 500
+    scale: 0
+    sample: nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits
+  - title: "\U0001F40F vRAM"
+    position: [[40, 14], [40, 24]]
+    rate-ms: 500
+    scale: 0
+    sample: nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits
+textboxes:
+  - title: ""
+    position: [[28, 0], [25, 11]]
+    rate-ms: 60000
+    color: 1
+    sample: echo "GPU" | figlet -f roman
+    border: false

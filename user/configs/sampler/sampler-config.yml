@@ -1,0 +1,28 @@
+sparklines:
+  - title: "\U0001F4BB CPU"
+    rate-ms: 500
+    scale: 0
+    sample: ps -A -o %cpu |awk '{s+=$1} END {print s}'
+  - title: "\U0001F40F RAM"
+    rate-ms: 500
+    scale: 0
+    sample: free | grep Mem | awk '{print int($3/$2 * 100.0)}'
+  - title: "\U0001F3AE GPU"
+    rate-ms: 500
+    scale: 0
+    sample: nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits
+  - title: "\U0001F3AE VRAM"
+    rate-ms: 500
+    scale: 0
+    sample: nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits
+textboxes:
+  - title: Description
+    position: [[0, 0], [40, 12]]
+    rate-ms: 100000
+    sample: echo "Time Information" | cowsay -f stegosaurus
+    border: false
+  - title: "\U0001F553 Time"
+    position: [[40, 20], [40, 12]]
+    rate-ms: 2000
+    sample: date "+%H:%M"
+    border: false

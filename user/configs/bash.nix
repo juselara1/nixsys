@@ -1,4 +1,4 @@
-{config_path}:
+{config_path, home_path, ...}:
 {
   enable = true;
   enableCompletion = true;
@@ -9,12 +9,14 @@ for file in "${config_path}/bash/*.sh"; do
 done
 '';
   sessionVariables = {
-    EDITOR = "emacs";
+    EDITOR = "nvim";
     TERM = "xterm";
+	CONFIG_PATH = "${config_path}";
+	REPOS_PATH = "${home_path}";
   };
   shellAliases = {
     ls = "ls --color=auto";
-    l = "ls";
+    l = "launcher_menu";
     c = "clear";
     gs = "git status";
     ga = "git add";

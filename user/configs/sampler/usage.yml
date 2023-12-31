@@ -1,0 +1,18 @@
+sparklines:
+  - title: "\U0001F4BB CPU"
+    position: [[0, 14], [40, 24]]
+    rate-ms: 500
+    scale: 0
+    sample: ps -A -o %cpu | awk '{s+=$1} END {print s}'
+  - title: "\U0001F40F RAM"
+    position: [[40, 14], [40, 24]]
+    rate-ms: 500
+    scale: 0
+    sample: free | grep Mem | awk '{print int($3/$2 * 100.0)}'
+textboxes:
+  - title: ""
+    position: [[28, 0], [25, 11]]
+    rate-ms: 60000
+    color: 1
+    sample: echo "Usage" | figlet -f roman
+    border: false

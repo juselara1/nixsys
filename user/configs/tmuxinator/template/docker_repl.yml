@@ -1,0 +1,18 @@
+name: {project_name}
+root: {project_path}
+attach: true
+windows:
+  - editor:
+      layout: main-vertical
+      panes:
+        - nvim
+        - {project_repl}
+  - shell:
+      layout: main-vertical
+  - docker:
+      layout: main-vertical
+      panes:
+        - logs:
+          - docker-compose build
+          - docker-compose up -d
+          - docker exec -it {container_name} bash
