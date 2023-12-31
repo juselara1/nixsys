@@ -55,7 +55,7 @@
     wget curl pciutils
 
     # essential
-    gcc lld gnupg pinentry-qt pinentry-curses
+    gcc lld gnupg pinentry-curses
 
     # virtualization
     virt-manager qemu
@@ -67,7 +67,7 @@
   services.pcscd.enable = true;
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "qt";
+    pinentryFlavor = "curses";
     enableSSHSupport = true;
   };
 
