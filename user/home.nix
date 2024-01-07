@@ -29,10 +29,10 @@ in {
     alacritty
 
     # command line
-    starship zoxide bat jq fzf unzip zip btop tree delta gh sampler figlet tmux tmuxinator
+    starship zoxide bat jq fzf unzip zip btop tree delta gh sampler tmux tmuxinator
 
     # browser
-    firefox qutebrowser-qt6 qt6.qtwebengine
+    firefox qutebrowser-qt6 qt6.qtwebengine google-chrome
 
     # images
     zathura inkscape sxiv mpv
@@ -56,9 +56,10 @@ in {
   # files
   home.file.".xinitrc".text = builtins.readFile "${config_path}/xinitrc";
   home.file.".inputrc".text = builtins.readFile "${config_path}/inputrc";
+  home.file.".gitconfig.local".text = builtins.readFile "${config_path}/gitconfig.local";
   home.file.".config/i3/config".text = builtins.readFile "${config_path}/i3.conf";
   home.file.".config/alacritty/alacritty.yml".text = builtins.readFile "${config_path}/alacritty.yml";
-  home.file.".gitconfig.local".text = builtins.readFile "${config_path}/gitconfig.local";
+  home.file.".local/share/nvim/lazy/nvim-treesitter/queries/nu/highlights.scm".text = builtins.readFile "${config_path}/nushell/highlights.scm";
   home.file.".${qutebrowser_profiles.profile1}/config/config.py".text = builtins.readFile "${config_path}/${qutebrowser_profiles.profile1}/config.py";
   home.file.".${qutebrowser_profiles.profile1}/config/quickmarks".text = builtins.readFile "${config_path}/${qutebrowser_profiles.profile1}/quickmarks";
 
@@ -68,14 +69,13 @@ in {
   # program config
   programs.fzf = import "${config_path}/fzf.nix";
   programs.home-manager = import "${config_path}/home-manager.nix";
-  programs.direnv = import "${config_path}/direnv.nix";
   programs.zoxide = import "${config_path}/zoxide.nix";
   programs.starship = import "${config_path}/starship.nix";
   programs.git = import "${config_path}/git.nix";
-  # programs.alacritty = import "${config_path}/alacritty.nix";
   programs.zathura = import "${config_path}/zathura.nix";
   programs.firefox = import "${config_path}/firefox.nix" {pkgs = pkgs; lib = lib; config_path = config_path;};
   programs.bash = import "${config_path}/bash.nix" {config_path = config_path; home_path=home_path;};
   programs.neovim = import "${config_path}/neovim.nix" {pkgs = pkgs;};
   programs.tmux = import "${config_path}/tmux.nix" {pkgs = pkgs;};
+  programs.nushell = import "${config_path}/nushell.nix" {config_path = config_path;};
 }

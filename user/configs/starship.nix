@@ -1,6 +1,7 @@
 {
   enable = true;
   enableBashIntegration = true;
+  enableNushellIntegration = false;
   settings = {
     character = {
       error_symbol = "[✖](bold red) ";

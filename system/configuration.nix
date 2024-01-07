@@ -37,7 +37,7 @@
 
   # default user config
   users.users.juselara = {
-    shell = pkgs.bash;
+    shell = pkgs.nushell;
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" "libvirtd" ];
     initialPassword = "pass123";
@@ -118,7 +118,7 @@
   programs.dconf.enable = true;
 
   # Nixos version.
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 }
 
 # nix-env --list-generations
