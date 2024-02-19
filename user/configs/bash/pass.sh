@@ -7,9 +7,3 @@ get_password() {
 	echo "${accounts}"
 	local selected_account=`echo -e "${accounts[@]}" | fzf` && pass -c "${selected_account}"
 }
-
-pass_menu() {
-	local options="get\nadd"
-	local selected_option=`echo -e "${options}" | fzf --header "Select account" --height "40%" --layout=reverse`
-	eval "${selected_option}_password"
-}

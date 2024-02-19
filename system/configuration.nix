@@ -37,7 +37,7 @@
 
   # default user config
   users.users.juselara = {
-    shell = pkgs.nushell;
+    shell = pkgs.bash;
     isNormalUser = true;
     extraGroups = [ "wheel" "docker" "libvirtd" ];
     initialPassword = "pass123";
@@ -106,6 +106,9 @@
         intelBusId = "PCI:0:2:0"; # find through lspci
     };
   };
+
+  # bluetooth
+  hardware.firmware = [ pkgs.rtl8761b-firmware ];
 
   # docker
   virtualisation.docker = {

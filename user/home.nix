@@ -23,19 +23,19 @@ in {
 
   home.packages = with pkgs; [
     # development
-    git gnumake lua-language-server ruff
+    git gnumake lua-language-server ruff rustup python311 python311Packages.pip
 
     # terminal emulator
     alacritty
 
     # command line
-    starship zoxide bat jq fzf unzip zip btop tree delta gh sampler tmux tmuxinator
+    starship zoxide bat jq fzf unzip zip btop tree delta gh tmux zellij
 
     # browser
     firefox qutebrowser-qt6 qt6.qtwebengine google-chrome
 
     # images
-    zathura inkscape sxiv mpv
+    zathura inkscape sxiv mpv chafa
 
     # capture
     flameshot xclip obs-studio
@@ -44,13 +44,16 @@ in {
     pass
 
     # desktop
-    feh xdotool rofimoji arandr
+    feh xdotool arandr
 
     # fonts
     nerdfonts
 
     # cloud
     pulumi awscli2
+
+	# management
+	obsidian
   ];
 
   # files
@@ -59,7 +62,6 @@ in {
   home.file.".gitconfig.local".text = builtins.readFile "${config_path}/gitconfig.local";
   home.file.".config/i3/config".text = builtins.readFile "${config_path}/i3.conf";
   home.file.".config/alacritty/alacritty.yml".text = builtins.readFile "${config_path}/alacritty.yml";
-  home.file.".local/share/nvim/lazy/nvim-treesitter/queries/nu/highlights.scm".text = builtins.readFile "${config_path}/nushell/highlights.scm";
   home.file.".${qutebrowser_profiles.profile1}/config/config.py".text = builtins.readFile "${config_path}/${qutebrowser_profiles.profile1}/config.py";
   home.file.".${qutebrowser_profiles.profile1}/config/quickmarks".text = builtins.readFile "${config_path}/${qutebrowser_profiles.profile1}/quickmarks";
 
@@ -77,5 +79,4 @@ in {
   programs.bash = import "${config_path}/bash.nix" {config_path = config_path; home_path=home_path;};
   programs.neovim = import "${config_path}/neovim.nix" {pkgs = pkgs;};
   programs.tmux = import "${config_path}/tmux.nix" {pkgs = pkgs;};
-  programs.nushell = import "${config_path}/nushell.nix" {config_path = config_path;};
 }

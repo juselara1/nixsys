@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # activate python environments
-activatepy() {
+activate() {
     pushd . "$@" > /dev/null
     gr
     source ".venv/bin/activate"

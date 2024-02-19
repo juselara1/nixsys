@@ -17,17 +17,7 @@ done
   shellAliases = {
     ls = "ls --color=auto";
     l = "launcher_menu";
+    p = "get_password";
     c = "clear";
-    gs = "git status";
-    ga = "git add";
-    gc = "git commit -m";
-    gca = "git commit --amend";
-    gp = "git push";
-    gpl = "git pull";
-    gch = "git checkout";
-    gd = "git diff";
-    gm = "git merge";
-    gl = "git log";
-    pw = "pass -c";
   };
 }

@@ -11,29 +11,11 @@ e() {
     fi
 }
 
-# move to git root
-gr() {
-    cd `git rev-parse --show-toplevel`
+_e_completions() {
+	files=`find . -maxdepth 1 -not -type d | xargs`
+	COMPREPLY=(`compgen -W "${files}" "${COMP_WORDS[1]}"`)
 }
-
-# tmux
-t() {
-    alias tmux="TERM=screen-256color-bce tmux"
-    case $1 in
-        n)
-            tmux new -s $2
-            ;;
-        a)
-            tmux attach -t $2
-            ;;
-        l | ls)
-            tmux ls
-            ;;
-        k)
-            tmux kill-session -t $2
-            ;;
-    esac
-}
+complete -F _e_completions e
 
 # shutdown
 po() {
