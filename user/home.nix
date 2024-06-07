@@ -23,45 +23,45 @@ in {
 
   home.packages = with pkgs; [
     # development
-    git gnumake lua-language-server ruff rustup python311 python311Packages.pip
+	# general
+    git gnumake plantuml
 
-    # terminal emulator
-    alacritty
+	# python
+	pyenv
+
+	# lua
+	lua-language-server
+
+	# c
+	clang-tools
+
+	# images
+	sxiv zathura imagemagick
 
     # command line
-    starship zoxide bat jq fzf unzip zip btop tree delta gh tmux zellij
+    starship zoxide bat jq fzf unzip zip btop tree delta gh tmux
+	chafa tig ripgrep util-linux fastfetch scrot
 
     # browser
-    firefox qutebrowser-qt6 qt6.qtwebengine google-chrome
-
-    # images
-    zathura inkscape sxiv mpv chafa
-
-    # capture
-    flameshot xclip obs-studio
+    firefox
 
     # password
     pass
 
     # desktop
-    feh xdotool arandr
+    feh xdotool arandr picom awesome
 
-    # fonts
-    nerdfonts
-
-    # cloud
-    pulumi awscli2
-
-	# management
-	obsidian
+    # note taking
+    nb w3m-nox nmap pandoc
   ];
 
   # files
   home.file.".xinitrc".text = builtins.readFile "${config_path}/xinitrc";
   home.file.".inputrc".text = builtins.readFile "${config_path}/inputrc";
   home.file.".gitconfig.local".text = builtins.readFile "${config_path}/gitconfig.local";
-  home.file.".config/i3/config".text = builtins.readFile "${config_path}/i3.conf";
-  home.file.".config/alacritty/alacritty.yml".text = builtins.readFile "${config_path}/alacritty.yml";
+  home.file.".config/awesome/rc.lua".text = builtins.readFile "${config_path}/awesome/rc.lua";
+  home.file.".config/alacritty/alacritty.toml".text = builtins.readFile "${config_path}/alacritty.toml";
+  home.file.".config/fastfetch/config.jsonc".text = builtins.readFile "${config_path}/fastfetch/config.jsonc";
   home.file.".${qutebrowser_profiles.profile1}/config/config.py".text = builtins.readFile "${config_path}/${qutebrowser_profiles.profile1}/config.py";
   home.file.".${qutebrowser_profiles.profile1}/config/quickmarks".text = builtins.readFile "${config_path}/${qutebrowser_profiles.profile1}/quickmarks";
 
@@ -74,7 +74,6 @@ in {
   programs.zoxide = import "${config_path}/zoxide.nix";
   programs.starship = import "${config_path}/starship.nix";
   programs.git = import "${config_path}/git.nix";
-  programs.zathura = import "${config_path}/zathura.nix";
   programs.firefox = import "${config_path}/firefox.nix" {pkgs = pkgs; lib = lib; config_path = config_path;};
   programs.bash = import "${config_path}/bash.nix" {config_path = config_path; home_path=home_path;};
   programs.neovim = import "${config_path}/neovim.nix" {pkgs = pkgs;};

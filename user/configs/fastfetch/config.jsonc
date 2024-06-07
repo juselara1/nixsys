@@ -1,0 +1,50 @@
+{
+	"logo": {
+		"type": "auto",
+		"source": "/home/juselara/.config/home-manager/configs/fastfetch/logo.txt"
+	},
+	"display": {
+        "color": "cyan",
+		"separator": "  "
+    },
+	"modules": [
+		 {
+            "type": "custom",
+            "format": "\u001b[90m┌────────────────────────────────────────────────────────────┐"
+        },
+        {
+            "type": "title",
+            "keyWidth": 10,
+			"format": "                       {6}{7}{8}"
+        },
+		{
+            "type": "custom",
+            "format": "\u001b[90m└────────────────────────────────────────────────────────────┘"
+        },
+		{
+            "type": "memory",
+            "keyColor": "blue",
+            "key": "󰑭 RAM"
+        },
+		{
+            "type": "swap",
+            "keyColor": "blue",
+            "key": "󰓡 Swap"
+        },
+		{
+            "type": "disk",
+            "key": " Disk",
+            "keyColor": "blue"
+        },
+		{
+            "type": "gpu",
+            "key": "󰍛 GPU",
+            "keyColor": "blue"
+        },
+		{
+            "type": "cpu",
+            "key": "󰻠 CPU",
+            "keyColor": "blue"
+        }
+	]
+}
