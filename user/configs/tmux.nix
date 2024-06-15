@@ -15,20 +15,16 @@
 			set -g @thumbs-alphabet dvorak-homerow
 			'';
 		}
-		{
-			plugin = dracula;
-			extraConfig = ''
-			set -g @dracula-show-powerline true
-			set -g @dracula-refresh-rate 10
-			set -g @dracula-plugins "cpu-usage ram-usage network-ping battery time"
-			set -g @dracula-show-empty-plugins false
-			set -g @dracula-show-left-icon session
-			'';
-		}
 	];
 	extraConfig = ''
+set -g status-style "bg=#333333 fg=#689D6A"
+set -sg escape-time 0
+set -g status-right ""
+set -g pane-border-style "fg=#555555"
+set -g pane-active-border-style "fg=#689D6A"
+
 set-option -ga terminal-overrides ",xterm-256color:Tc" 
-set-option -g status-position top
+set-option -g status-position bottom
 set -g renumber-windows on
 
 bind -T copy-mode-vi v send-keys -X begin-selection

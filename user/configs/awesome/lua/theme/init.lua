@@ -1,17 +1,24 @@
+local theme_assets = require("beautiful.theme_assets")
+
 ---Setups theme
 local function setup(_)
 	local beautiful = require("beautiful")
-	beautiful.menu_font = "UbuntuMono 15"
-	beautiful.menu_height = 30
-	beautiful.menu_width = 200
-	beautiful.menu_bg_normal = "#111111"
-	beautiful.menu_bg_focus = "#222222"
-	beautiful.menu_fg_normal = "#689D6A"
-	beautiful.menu_fg_focus = "#689D6A"
+	beautiful.font = "UbuntuMono 12"
+	beautiful.fg = "#D5C4A1"
+	beautiful.bg = "#282828"
+	beautiful.opacity = 0.85
+	beautiful.focus = "#689D6A"
 	beautiful.border_width = 3
-	beautiful.border_normal = "#111111"
-	beautiful.border_focus = "#689D6A"
+	beautiful.border_normal = beautiful.bg
+	beautiful.border_focus = beautiful.focus
 	beautiful.useless_gap = 5
+	beautiful.taglist_squares_sel = theme_assets.taglist_squares_sel(
+        150,
+        beautiful.focus
+    )
+	beautiful.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
+		150, beautiful.bg
+	)
 end
 
 return {

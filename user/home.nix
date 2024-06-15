@@ -36,7 +36,7 @@ in {
 	clang-tools
 
 	# images
-	sxiv zathura imagemagick
+	sxiv zathura imagemagick graphviz
 
     # command line
     starship zoxide bat jq fzf unzip zip btop tree delta gh tmux
@@ -62,6 +62,7 @@ in {
   home.file.".config/awesome/rc.lua".text = builtins.readFile "${config_path}/awesome/rc.lua";
   home.file.".config/alacritty/alacritty.toml".text = builtins.readFile "${config_path}/alacritty.toml";
   home.file.".config/fastfetch/config.jsonc".text = builtins.readFile "${config_path}/fastfetch/config.jsonc";
+  home.file.".config/picom/picom.conf".text = builtins.readFile "${config_path}/picom/picom.conf";
   home.file.".${qutebrowser_profiles.profile1}/config/config.py".text = builtins.readFile "${config_path}/${qutebrowser_profiles.profile1}/config.py";
   home.file.".${qutebrowser_profiles.profile1}/config/quickmarks".text = builtins.readFile "${config_path}/${qutebrowser_profiles.profile1}/quickmarks";
 

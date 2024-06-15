@@ -13,7 +13,15 @@ local function setup(args)
 	}
 	-- Creates workspaces
 	awful.screen.connect_for_each_screen(function(s)
-		awful.tag({ '1', '2' }, s, awful.layout.layouts[1])
+		awful.tag.add("Normal", {
+			layout = awful.layout.layouts[1],
+			screen = s,
+			selected = true
+		})
+		awful.tag.add("Background", {
+			layout = awful.layout.layouts[1],
+			screen = s
+		})
 	end)
 
 	-- Defines what happens when a client connects
