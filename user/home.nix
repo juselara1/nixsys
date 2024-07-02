@@ -52,7 +52,7 @@ in {
     feh xdotool arandr picom awesome
 
     # note taking
-    nb w3m-nox nmap pandoc
+    nb w3m-nox nmap pandoc weylus 
   ];
 
   # files
