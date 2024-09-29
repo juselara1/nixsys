@@ -1,6 +1,13 @@
 [window]
 opacity = 0.85
 
+[font]
+size = 12
+
+[font.normal]
+family = "MonaspiceNe Nerd Font"
+style = "Regular"
+
 # Default colors
 [colors.primary]
 background = '#282828'

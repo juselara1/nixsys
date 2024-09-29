@@ -15,6 +15,7 @@ fi
 if [[ -d "$HOME/.platformio/penv/bin" ]]; then
 	export PATH="$PATH:$HOME/.platformio/penv/bin/"
 fi
+#eval "$(atuin init bash)"
 fastfetch
 '';
   sessionVariables = {
@@ -23,6 +24,7 @@ fastfetch
     BROWSER = "firefox";
     CONFIG_PATH = "${config_path}";
     REPOS_PATH = "${home_path}";
+	NIXOS_OZONE_WL = "1";
   };
   shellAliases = {
     ls = "ls --color=auto";

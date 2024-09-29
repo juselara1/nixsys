@@ -1,0 +1,6 @@
+[font]
+normal = ["MonaspiceNe Nerd Font"]
+size = 12
+
+[font.features]
+"MonaspiceNe Nerd Font" = [ "+ss01", "+ss02", "+ss03", "+ss05", "liga" ]

@@ -22,9 +22,8 @@ in {
   home.stateVersion = "23.11";
 
   home.packages = with pkgs; [
-    # development
 	# general
-    git gnumake plantuml
+    git gnumake plantuml neovide alacritty
 
 	# python
 	pyenv
@@ -40,29 +39,29 @@ in {
 
     # command line
     starship zoxide bat jq fzf unzip zip btop tree delta gh tmux
-	chafa tig ripgrep util-linux fastfetch scrot
+	chafa tig ripgrep util-linux fastfetch nerdfonts
+	nix-search-cli monaspace
 
     # browser
-    firefox
+    firefox qutebrowser google-chrome
 
     # password
     pass
 
     # desktop
-    feh xdotool arandr picom awesome
+	eww wl-clipboard dunst libnotify swww
 
     # note taking
-    nb w3m-nox nmap pandoc weylus 
+    nb w3m-nox nmap pandoc gnome.adwaita-icon-theme
   ];
 
   # files
-  home.file.".xinitrc".text = builtins.readFile "${config_path}/xinitrc";
-  home.file.".inputrc".text = builtins.readFile "${config_path}/inputrc";
-  home.file.".gitconfig.local".text = builtins.readFile "${config_path}/gitconfig.local";
-  home.file.".config/awesome/rc.lua".text = builtins.readFile "${config_path}/awesome/rc.lua";
-  home.file.".config/alacritty/alacritty.toml".text = builtins.readFile "${config_path}/alacritty.toml";
+  home.file.".inputrc".text = builtins.readFile "${config_path}/rc/inputrc";
+  home.file.".gitconfig.local".text = builtins.readFile "${config_path}/git/gitconfig.local";
+  home.file.".config/alacritty/alacritty.toml".text = builtins.readFile "${config_path}/alacritty/alacritty.toml";
   home.file.".config/fastfetch/config.jsonc".text = builtins.readFile "${config_path}/fastfetch/config.jsonc";
-  home.file.".config/picom/picom.conf".text = builtins.readFile "${config_path}/picom/picom.conf";
+  home.file.".config/neovide/config.toml".text = builtins.readFile "${config_path}/neovide/config.toml";
+  home.file.".config/hypr/hyprland.conf".text = builtins.readFile "${config_path}/hypr/hyprland.conf";
   home.file.".${qutebrowser_profiles.profile1}/config/config.py".text = builtins.readFile "${config_path}/${qutebrowser_profiles.profile1}/config.py";
   home.file.".${qutebrowser_profiles.profile1}/config/quickmarks".text = builtins.readFile "${config_path}/${qutebrowser_profiles.profile1}/quickmarks";
 
