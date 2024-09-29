@@ -28,6 +28,17 @@
   networking.hostName = "zenaio";
   networking.networkmanager.enable = true;
 
+  # # weylus
+  # networking.firewall = {
+  # 	enable = true;
+  #   allowedTCPPorts = [ 1701 9001 ];
+  # };
+  # hardware.uinput.enable = true;
+  # users.groups.uinput = {};
+  # services.udev.extraRules = ''
+  # KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"
+  # '';
+
   # timezone
   time.timeZone = "America/Bogota";
 
@@ -39,7 +50,7 @@
   users.users.juselara = {
     shell = pkgs.bash;
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" "libvirtd" ];
+    extraGroups = [ "wheel" "docker" "libvirtd" "uinput" ];
     initialPassword = "pass123";
   };
 
@@ -74,6 +85,13 @@
   # ssh
   services.openssh.enable = true;
 
+  # hyprland
+  programs.hyprland = {
+	enable = true;
+	enableNvidiaPatches = true;
+	xwayland.enable = true;
+  };
+
   # x11
   services.xserver = {
     enable = true;
@@ -81,25 +99,24 @@
       xterm.enable = false;
     };
     displayManager = {
-      defaultSession = "none+i3";
+      defaultSession = "none";
       startx.enable = true;
       lightdm.enable = false;
       gdm.enable = false;
     };
-    windowManager = {
-      i3.enable = true;
-    };
-    videoDrivers = ["nvidia" "displaylink"]; # `nix-prefetch-url file://$PWD/displaylink-570.zip`
+    videoDrivers = ["nvidia"];
   };
 
   # opengl
   hardware.opengl = {
+  	enable = true;
     driSupport32Bit = true;
   };
 
   # nvidia
   hardware.nvidia = {
     nvidiaPersistenced = true;
+	modesetting.enable = true;
     prime = {
         offload.enable = true;
         nvidiaBusId = "PCI:1:0:0"; # find through lspci
@@ -109,6 +126,10 @@
 
   # bluetooth
   hardware.firmware = [ pkgs.rtl8761b-firmware ];
+  hardware.bluetooth = {
+	enable = true;
+	powerOnBoot = true;
+  };
 
   # docker
   virtualisation.docker = {
