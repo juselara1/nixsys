@@ -78,8 +78,8 @@
   services.pcscd.enable = true;
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "curses";
     enableSSHSupport = true;
+	pinentryPackage = pkgs."pinentry-curses";
   };
 
   # ssh
@@ -88,7 +88,6 @@
   # hyprland
   programs.hyprland = {
 	enable = true;
-	enableNvidiaPatches = true;
 	xwayland.enable = true;
   };
 
@@ -99,13 +98,13 @@
       xterm.enable = false;
     };
     displayManager = {
-      defaultSession = "none";
       startx.enable = true;
       lightdm.enable = false;
       gdm.enable = false;
     };
     videoDrivers = ["nvidia"];
   };
+  services.displayManager.defaultSession = "none";
 
   # opengl
   hardware.opengl = {
@@ -115,7 +114,6 @@
 
   # nvidia
   hardware.nvidia = {
-    nvidiaPersistenced = true;
 	modesetting.enable = true;
     prime = {
         offload.enable = true;
@@ -132,10 +130,8 @@
   };
 
   # docker
-  virtualisation.docker = {
-    enable = true;
-    enableNvidia = true;
-  };
+  virtualisation.docker.enable = true;
+  hardware.nvidia-container-toolkit.enable = true;
 
   # qemu
   virtualisation.libvirtd.enable = true;
