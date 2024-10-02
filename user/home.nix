@@ -49,7 +49,7 @@ in {
     pass
 
     # desktop
-	eww wl-clipboard dunst libnotify swww
+	eww wl-clipboard dunst libnotify swww grim slurp
 
     # note taking
     nb w3m-nox nmap pandoc gnome.adwaita-icon-theme
@@ -62,6 +62,8 @@ in {
   home.file.".config/fastfetch/config.jsonc".text = builtins.readFile "${config_path}/fastfetch/config.jsonc";
   home.file.".config/neovide/config.toml".text = builtins.readFile "${config_path}/neovide/config.toml";
   home.file.".config/hypr/hyprland.conf".text = builtins.readFile "${config_path}/hypr/hyprland.conf";
+  home.file.".config/eww/eww.yuck".text = builtins.readFile "${config_path}/eww/eww.yuck";
+  home.file.".config/eww/eww.scss".text = builtins.readFile "${config_path}/eww/eww.scss";
   home.file.".${qutebrowser_profiles.profile1}/config/config.py".text = builtins.readFile "${config_path}/${qutebrowser_profiles.profile1}/config.py";
   home.file.".${qutebrowser_profiles.profile1}/config/quickmarks".text = builtins.readFile "${config_path}/${qutebrowser_profiles.profile1}/quickmarks";
 

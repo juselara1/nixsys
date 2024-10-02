@@ -1,0 +1,90 @@
+(defwidget bar []
+	(box 
+		:class "bar"
+		:space-evenly true
+		(box
+			:space-evenly false
+			:spacing 10
+			(card :class "cpu" :label "💻" :halign "start" :value "${cpu}%")
+			(card :class "ram" :label "🐏" :halign "start" :value "${ram}%")
+			(card :class "gpu" :label "🎮" :halign "start" :value "${gpu}%")
+		)
+		(clock)
+	)
+)
+
+(defpoll time
+	:interval "1s"
+	"~/.config/home-manager/configs/eww/utils.sh get_time"
+)
+
+(defpoll date
+	:interval "1s"
+	"~/.config/home-manager/configs/eww/utils.sh get_date"
+)
+
+(defpoll cpu
+	:interval "5s"
+	"~/.config/home-manager/configs/eww/utils.sh get_cpu"
+)
+
+(defpoll ram
+	:interval "5s"
+	"~/.config/home-manager/configs/eww/utils.sh get_ram"
+)
+
+(defpoll gpu
+	:interval "5s"
+	"~/.config/home-manager/configs/eww/utils.sh get_gpu"
+)
+
+(defwidget clock []
+	(box
+		:class "clock"
+		:orientation "v"
+		:space-evenly false
+		:halign "end"
+		(box :class "clock-time" time)
+		(box :class "clock-date" date)
+	)
+)
+
+(defwidget card [class label halign value]
+	(box
+		:class class
+		:orientation "h"
+		:space-evenly true
+		:halign halign
+		(box :class "card-label" label)
+		(box :class "card-value" value)
+	)
+)
+
+(defwindow bar0
+	:monitor 0
+	:geometry (geometry
+		:y "1%"
+		:width "98%"
+		:height "40px"
+		:anchor "top center"
+	)
+	:stacking "fg"
+	:exclusive true
+	:focusable false
+	(bar)
+)
+
+; Add or remove when multimonitor
+(defwindow bar1
+	:monitor 1
+	:geometry (geometry
+		:y "1%"
+		:width "98%"
+		:height "40px"
+		:anchor "top center"
+	)
+	:stacking "fg"
+	:exclusive true
+	:focusable false
+	(bar)
+)

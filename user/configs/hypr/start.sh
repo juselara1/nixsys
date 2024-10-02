@@ -11,4 +11,11 @@ init_wallpaper() {
 	swww img `pick_rand "${HOME}/.config/home-manager/configs/wallpaper/"` &
 }
 
+init_bar() {
+	eww daemon
+	eww open bar0
+	eww open bar1
+}
+
 init_wallpaper
+init_bar

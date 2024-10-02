@@ -1,0 +1,68 @@
+$font: "MonaspiceNe Nerd Font";
+$font-size: 12;
+$bg-color: rgba(40, 40, 40, 0.8);
+$fg-color: rgb(235, 219, 178);
+$fg-color2: rgb(40, 40, 40);
+$clock-color: rgb(142, 192, 124);
+$cpu-color: rgb(131, 165, 152);
+$ram-color: rgb(204, 36, 29);
+$gpu-color: rgb(235, 219, 178);
+
+* {
+  all: unset;
+}
+
+.bar {
+  background-color: $bg-color;
+  color: $fg-color;
+  font-family: $font;
+  font-size: $font-size;
+  border-radius: 15px;
+  border: 2px solid rgb(146, 131, 116);
+}
+
+%card {
+  color: $fg-color2;
+  padding: 0 10 0 10;
+  font-weight: bold;
+  border-radius: 10px;
+
+  .card-label {
+    font-size: $font-size * 1.8;
+  }
+
+  .card-value {
+    font-size: $font-size;
+  }
+}
+
+.clock {
+  @extend %card;
+  background-color: $clock-color;
+  margin: 5 10 5 0;
+  .clock-time {
+    font-size: $font-size * 1.2;
+  }
+
+  .clock-date {
+    font-size: $font-size * 0.9;
+  }
+}
+
+.cpu {
+  @extend %card;
+  background-color: $cpu-color;
+  margin: 5 0 5 10;
+}
+
+.ram {
+  @extend %card;
+  background-color: $ram-color;
+  margin: 5 0 5 0;
+}
+
+.gpu {
+  @extend %card;
+  background-color: $gpu-color;
+  margin: 5 0 5 0;
+}
