@@ -7,7 +7,7 @@ e() {
     elif [[ $1 == *.svg ]]; then
         inkscape $1 &
     else
-        neovide $1 &
+        nvim $1
     fi
 }
 

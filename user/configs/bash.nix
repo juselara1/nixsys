@@ -15,8 +15,7 @@ fi
 if [[ -d "$HOME/.platformio/penv/bin" ]]; then
 	export PATH="$PATH:$HOME/.platformio/penv/bin/"
 fi
-#eval "$(atuin init bash)"
-fastfetch
+# fastfetch
 '';
   sessionVariables = {
     EDITOR = "nvim";
