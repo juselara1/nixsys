@@ -2,18 +2,27 @@
 
 # select editor given the file format
 e() {
-    if [[ $1 == *.jpg || $1 == *.png ]]; then
-        sxiv $1
-    elif [[ $1 == *.svg ]]; then
-        inkscape $1 &
-    else
-        nvim $1
-    fi
+	if [[ -z "${1}" ]]; then
+		local server_name="server"
+	else
+		local server_name="${1}"
+	fi
+	local server="${HOME}/.cache/nvim/${server_name}.pipe" 
+	if [[ ! -S "${server}" ]]; then
+		nvim --listen "${server}"
+	else
+		nvim --server "${server}" --remote-send "<cmd>cd ${PWD}<cr>"
+		nvim --server "${server}" --remote-ui
+	fi
 }
 
 _e_completions() {
-	files=`find . -maxdepth 1 -not -type d | xargs`
-	COMPREPLY=(`compgen -W "${files}" "${COMP_WORDS[1]}"`)
+	local servers=`find ~/.cache/nvim/ -maxdepth 1 \
+		| awk -F '/' '{print $NF}'\
+		| grep -P 'pipe' \
+		| sed 's/\.pipe//g' \
+		| xargs`
+	COMPREPLY=(`compgen -W "${servers}" "${COMP_WORDS[1]}"`)
 }
 complete -F _e_completions e
 

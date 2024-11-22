@@ -1,25 +1,25 @@
 # create tmux session
 tn () {
-	for arg in $@; do
-		tmux new -d -s "${arg}"
-	done
+	local sessions=`tmux ls | sed 's/:.*//g' | xargs`
+	if [[ -z `echo "${sessions}" | grep -P "${1}"` ]]; then
+		tmux new -s "${1}"
+	elif [[ -z "${TMUX}" ]]; then
+		tmux attach -t "${1}"
+	else
+		tmux switch-client -t "${1}"
+	fi
 }
+
+_tn_completions () {
+	local sessions=`tmux ls | sed 's/:.*//g' | xargs`
+	COMPREPLY=(`compgen -W "${sessions}" "${COMP_WORDS[1]}"`)
+}
+complete -F _tn_completions tn
 
 # list tmux sessions
 tl () {
 	tmux ls
 }
-
-# attach tmux session
-ta () {
-	tmux attach -t $1
-}
-
-_ta_completions () {
-	sessions=`tmux ls | sed 's/:.*//g' | xargs`
-	COMPREPLY=(`compgen -W "${sessions}" "${COMP_WORDS[1]}"`)
-}
-complete -F _ta_completions ta
 
 # kill tmux session
 tk () {
@@ -29,7 +29,7 @@ tk () {
 }
 
 _tk_completions () {
-	sessions=`tmux ls | sed 's/:.*//g' | xargs`
+	local sessions=`tmux ls | sed 's/:.*//g' | xargs`
 	COMPREPLY=(`compgen -W "${sessions}" "${COMP_WORDS[COMP_CWORD]}"`)
 }
 complete -F _tk_completions tk

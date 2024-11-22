@@ -40,7 +40,7 @@ gs() {
 
 # git commit
 gc() {
-	git commit -m $1
+	git commit -m "$@"
 }
 
 _gc_completions() {
@@ -56,7 +56,7 @@ gca() {
 
 # git checkout
 gch() {
-	git checkout $1
+	git checkout $@
 }
 
 _gch_completions() {

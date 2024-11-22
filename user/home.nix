@@ -49,7 +49,7 @@ in {
     pass
 
     # desktop
-	eww wl-clipboard dunst libnotify swww grim slurp
+	eww wl-clipboard dunst libnotify swww grim slurp inkscape
 
     # note taking
     nb w3m-nox nmap pandoc gnome.adwaita-icon-theme
