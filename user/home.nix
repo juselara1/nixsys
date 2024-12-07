@@ -23,7 +23,7 @@ in {
 
   home.packages = with pkgs; [
 	# general
-    git gnumake plantuml alacritty
+    git gnumake plantuml
 
 	# python
 	pyenv
@@ -38,7 +38,7 @@ in {
 	sxiv zathura imagemagick graphviz
 
     # command line
-    starship zoxide bat jq fzf unzip zip btop tree delta gh tmux
+	zoxide bat jq fzf unzip zip btop tree delta gh tmux
 	chafa tig ripgrep util-linux fastfetch nerdfonts
 	nix-search-cli monaspace
 
@@ -49,10 +49,14 @@ in {
     pass
 
     # desktop
-	eww wl-clipboard dunst libnotify swww grim slurp inkscape
+	eww wl-clipboard dunst libnotify swww grim slurp inkscape pulsemixer
+	 (pkgs.callPackage "${config_path}/rosepine-hyprcursor.nix" { lib=lib; stdenv=stdenv; nixpkgs=pkgs; fetchurl=fetchurl;})
 
     # note taking
-    nb w3m-nox nmap pandoc gnome.adwaita-icon-theme
+    nb w3m-nox nmap pandoc adwaita-icon-theme
+
+	# calls
+	zoom-us
   ];
 
   # files
@@ -70,6 +74,7 @@ in {
   home.file.".${qutebrowser_profiles.profile2}/config/quickmarks".text = builtins.readFile "${config_path}/${qutebrowser_profiles.profile2}/quickmarks";
 
   # program config
+  programs.alacritty = import "${config_path}/alacritty.nix";
   programs.fzf = import "${config_path}/fzf.nix";
   programs.home-manager = import "${config_path}/home-manager.nix";
   programs.zoxide = import "${config_path}/zoxide.nix";

@@ -13,8 +13,9 @@ init_wallpaper() {
 
 init_bar() {
 	eww daemon
-	eww open bar0
-	eww open bar1
+	local wins=(`eww active-windows | xargs`)
+	[[ ! "${wins[@]}" =~ "bar0" ]] && eww open bar0
+	[[ ! "${wins[@]}" =~ "bar1" ]] && eww open bar1
 }
 
 init_wallpaper

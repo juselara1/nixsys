@@ -40,7 +40,7 @@
 	time.timeZone = "America/Bogota";
 
 	# Audio
-	sound.enable = true;
+	#sound.enable = true;
 	security.rtkit.enable = true;
 	services.pipewire = {
 		enable = true;
@@ -60,9 +60,6 @@
 
 	# default software
 	environment.systemPackages = with pkgs; [
-		# sound
-		pavucontrol
-
 		# nix utils
 		nix-index home-manager direnv
 
@@ -113,13 +110,14 @@
 	services.displayManager.defaultSession = "none";
 
 	# opengl
-	hardware.opengl = {
+	hardware.graphics = {
 		enable = true;
-		driSupport32Bit = true;
+		enable32Bit = true;
 	};
 
 	# nvidia
 	hardware.nvidia = {
+		open = false;
 		modesetting.enable = true;
 		prime = {
 			offload.enable = true;
