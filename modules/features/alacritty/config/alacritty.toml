@@ -1,0 +1,33 @@
+[window]
+opacity = 0.85
+
+[font]
+size = 14
+
+[font.normal]
+family = "Monaspace Neon"
+style = "Regular"
+
+[colors.primary]
+background = "#2D353B"
+foreground = "#D3C6AA"
+
+[colors.normal]
+black = "#475258"
+red = "#E67E80"
+green = "#A7C080"
+yellow = "#DBBC7F"
+blue = "#7FBBB3"
+magenta = "#D699B6"
+cyan = "#83C092"
+white = "#D3C6AA"
+
+[colors.bright]
+black = "#475258"
+red = "#E67E80"
+green = "#A7C080"
+yellow = "#DBBC7F"
+blue = "#7FBBB3"
+magenta = "#D699B6"
+cyan = "#83C092"
+white = "#D3C6AA"

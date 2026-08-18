@@ -1,0 +1,65 @@
+gui:
+  nerdFontsVersion: "3"
+  mouseEvents: false
+  border: rounded
+  showFileIcons: true
+  showBottomLine: true
+  showPanelJumps: true
+  showListFooter: true
+  showCommandLog: true
+  scrollHeight: 2
+  scrollOffMargin: 2
+  scrollOffBehavior: margin
+  mainPanelSplitMode: flexible
+  enlargedSideViewLocation: left
+  wrapLinesInStagingView: true
+  useHunkModeInStagingView: true
+  filterMode: fuzzy
+  splitDiff: auto
+  screenMode: normal
+
+  theme:
+    activeBorderColor:
+      - "#88C0D0"
+      - bold
+    inactiveBorderColor:
+      - "#4C566A"
+    searchingActiveBorderColor:
+      - "#81A1C1"
+      - bold
+    optionsTextColor:
+      - "#88C0D0"
+    selectedLineBgColor:
+      - "#3B4252"
+    inactiveViewSelectedLineBgColor:
+      - "#434C5E"
+    cherryPickedCommitFgColor:
+      - "#88C0D0"
+    cherryPickedCommitBgColor:
+      - "#434C5E"
+    markedBaseCommitFgColor:
+      - "#EBCB8B"
+    markedBaseCommitBgColor:
+      - "#434C5E"
+    unstagedChangesColor:
+      - "#BF616A"
+    defaultFgColor:
+      - "#D8DEE9"
+
+git:
+  diffRenderers:
+    - name: delta
+      colorArg: always
+      command: delta --dark --paging=never --side-by-side --line-numbers --keep-plus-minus-markers --syntax-theme=Nord
+
+  diffContextSize: 3
+  localBranchSortOrder: date
+  remoteBranchSortOrder: date
+  truncateCopiedCommitHashesTo: 12
+  autoFetch: true
+  fetchAll: true
+  autoRefresh: true
+  autoDetectExternalChanges: true
+
+os:
+  editPreset: nvim

@@ -1,0 +1,11 @@
+bind 'set editing-mode vi'
+bind 'set show-mode-in-prompt on'
+bind 'set vi-ins-mode-string "\1 \e[90m\2λ\1\e[0m\2 "'
+bind 'set vi-cmd-mode-string "\1 \e[32m\2λ\1\e[0m\2 "'
+
+bind -m vi-command '"ciw": "lbcw"'
+bind -m vi-command '"diw": "lbdw"'
+bind -m vi-command '"yiw": "lbyw"'
+bind -m vi-command '"ciW": "lBcW"'
+bind -m vi-command '"diW": "lBdW"'
+bind -m vi-command '"yiW": "lByW"'

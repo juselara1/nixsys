@@ -1,0 +1,141 @@
+prefer-no-csd
+input {
+    keyboard {
+      repeat-rate 35
+      repeat-delay 200
+      xkb {}
+      numlock
+    }
+
+    touchpad {
+        tap
+    }
+
+    mouse {
+    }
+
+    trackpoint {
+    }
+
+    focus-follows-mouse max-scroll-amount="0%"
+}
+
+// output "DVI-I-1" {
+//     mode "1920x1080@60.000"
+//     scale 1
+//     transform "270"
+//     position x=0 y=0
+// }
+
+output "HDMI-A-1" {
+    mode "1920x1080@60.000"
+    scale 1
+    transform "normal"
+    position x=1920 y=0
+}
+
+output "eDP-1" {
+    mode "1920x1080@60.000"
+    scale 1
+    transform "normal"
+    position x=3840 y=0
+}
+
+layout {
+    gaps 16
+    center-focused-column "never"
+    preset-column-widths {
+        proportion 0.5
+        proportion 1.0
+    }
+    default-column-width { proportion 1.0; }
+
+    focus-ring {
+        off
+    }
+
+    border {
+        width 4
+        active-gradient from="#A7C080" to="#2D353B" angle=180
+        inactive-gradient from="#83C092" to="#2D353B" angle=180
+        urgent-color "#E67E80"
+    }
+
+    shadow {
+        off
+    }
+
+    struts {
+    }
+}
+
+spawn-at-startup "awww-daemon"
+spawn-sh-at-startup "sleep 0.1 && awww img ~/.config/niri/wallpaper.jpg"
+
+hotkey-overlay {
+}
+
+
+animations {
+}
+
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+binds {
+    Mod+Return hotkey-overlay-title="Kitty" { spawn "kitty"; }
+    Mod+S   { spawn-sh "grim -g \"$(slurp -d)\" - | wl-copy"; }
+
+    Mod+O repeat=false { toggle-overview; }
+
+    Mod+Q repeat=false { close-window; }
+
+    Mod+H     { focus-column-left; }
+    Mod+L     { focus-column-right; }
+    Mod+J     { focus-workspace-down; }
+    Mod+K     { focus-workspace-up; }
+
+    Mod+Ctrl+H     { move-column-to-monitor-left; }
+    Mod+Ctrl+L     { move-column-to-monitor-right; }
+    Mod+Ctrl+J     { move-column-to-workspace-down; }
+    Mod+Ctrl+K     { move-column-to-workspace-up; }
+
+    Mod+G { move-column-to-first; }
+    Mod+Shift+G { move-column-to-last; }
+
+    Mod+Shift+H     { focus-monitor-left; }
+    Mod+Shift+L     { focus-monitor-right; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+Shift+1 { move-column-to-workspace 1; }
+    Mod+Shift+2 { move-column-to-workspace 2; }
+    Mod+Shift+3 { move-column-to-workspace 3; }
+    Mod+Shift+4 { move-column-to-workspace 4; }
+    Mod+Shift+5 { move-column-to-workspace 5; }
+    Mod+Shift+6 { move-column-to-workspace 6; }
+    Mod+Shift+7 { move-column-to-workspace 7; }
+    Mod+Shift+8 { move-column-to-workspace 8; }
+    Mod+Shift+9 { move-column-to-workspace 9; }
+
+    Mod+R { switch-preset-column-width; }
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+
+    Mod+P       { toggle-window-floating; }
+
+    Mod+Shift+S { screenshot-screen; }
+
+    Mod+Ctrl+Q { quit; }
+
+    Mod+Shift+P { power-off-monitors; }
+}
